@@ -1,0 +1,22 @@
+body {
+    background-color: #000000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.App {
+    max-width: 1800px;
+    margin: 20px;
+    padding: 20px;
+    width: auto;
+    position: relative;
+}
