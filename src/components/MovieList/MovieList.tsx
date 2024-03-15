@@ -4,7 +4,6 @@ import { getMovies } from "../../redux/Movie/randomMoviesSlice";
 import { getSearchedMovie } from "../../redux/Movie/searchMovieSlice";
 import { MovieType } from "../../commonTypes";
 import MovieListItem from "../MovieListItem/MovieListItem";
-import "./MovieList.css";
 import { useDebounce } from "../../customHooks/useDebounce";
 import Loader from "../Loader/Loader";
 

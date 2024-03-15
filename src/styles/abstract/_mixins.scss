@@ -1,0 +1,145 @@
+@mixin tablet {
+  @media (min-width: 767px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+@mixin tablet-lg {
+  @media (min-width: 991px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1200px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1500px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (min-width: 1650px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media (min-width: 1750px) {
+    transition: 0.5s;
+    @content;
+  }
+}
+
+
+/*======= Flex Functions and Prefix Start */
+
+@mixin flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-value($value) {
+  -webkit-box-flex: $value;
+  -ms-flex: $value;
+  flex: $value;
+}
+
+/* Flex - Justify , Align */
+@mixin justify-align($justify, $align) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+
+/*  Flex Justify */
+@mixin flex-justify($justify) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+}
+
+@mixin flex-justify-direction($justify, $direction) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-orient: $direction;
+  -webkit-box-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-align-direction($align, $direction) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  -webkit-box-orient: $direction;
+  -webkit-box-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+/*  Flex - Align */
+@mixin flex-align($align) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+
+/* Flex Direction */
+
+@mixin flex-direction($direction) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: $direction;
+  -webkit-box-orient: $direction;
+  -webkit-box-direction: $direction;
+  -ms-flex-direction: $direction;
+}
+
+@mixin justify-align-direction($justify, $align, $direction) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: $direction;
+  -webkit-box-orient: $direction;
+  -webkit-box-direction: $direction;
+  -ms-flex-direction: $direction;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+}
+
+/*======= Flex Functions and Prefix End */
