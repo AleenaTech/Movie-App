@@ -85,7 +85,7 @@ const MovieDetails: React.FC = () => {
 
     return (
         <div className="movie-details-container">
-            <h1 className="details-main-title">{movieDetails.TITLE}</h1>
+            <h2 className="details-main-title">{movieDetails.TITLE}</h2>
             <div className="movie-details-wrap">
                 <div className="detail-poster">
                     <img
