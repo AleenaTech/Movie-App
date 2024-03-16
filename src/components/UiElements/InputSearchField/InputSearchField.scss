@@ -1,0 +1,17 @@
+.search-container {
+    margin-bottom: 60px;
+
+    input[type="search"] {
+        width: 100%;
+        padding: 20px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        box-shadow: none;
+        outline: none;
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+}

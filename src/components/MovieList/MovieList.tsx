@@ -6,6 +6,7 @@ import { MovieType } from "../../commonTypes";
 import MovieListItem from "../MovieListItem/MovieListItem";
 import { useDebounce } from "../../customHooks/useDebounce";
 import Loader from "../Loader/Loader";
+import InputSearchField from "../UiElements/InputSearchField/InputSearchField";
 
 const MovieList: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -91,14 +92,10 @@ const MovieList: React.FC = () => {
 
     const searchContainer = () => {
         return (
-            <div className="search-container">
-                <input
-                    type="search"
-                    value={searchValue}
-                    placeholder="Search movie here"
-                    onChange={handleMovieSearch}
-                />
-            </div>
+            <InputSearchField
+                value={searchValue}
+                onChange={handleMovieSearch}
+            />
         );
     };
 

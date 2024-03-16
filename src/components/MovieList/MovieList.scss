@@ -1,52 +1,13 @@
-.movie-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
+.movie-list-wrap {
+    .movie-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
 
-.movie-list-item {
-    position: relative;
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.movie-list-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.movie-list-item img {
-    max-width: 100%;
-    height: auto;
-    transition: filter 0.3s ease;
-}
-
-.movie-list-item:hover img {
-    filter: brightness(70%);
-}
-
-.search-container {
-    margin-bottom: 60px;
-}
-
-.search-container input[type="search"] {
-    width: 100%;
-    padding: 20px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    box-shadow: none;
-    outline: none;
-}
-
-.search-container input[type="search"]::placeholder {
-    color: #999;
-}
-.listing-error {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+    .listing-error {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
