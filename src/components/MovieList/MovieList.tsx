@@ -59,7 +59,6 @@ const MovieList: React.FC = () => {
                 YEAR: movie["#YEAR"] || "",
             }));
             setFormattedMoviesList(formattedList);
-            setLoading(false);
         }
     }, [moviesList]);
 
@@ -89,6 +88,10 @@ const MovieList: React.FC = () => {
     useEffect(() => {
         setError(movieSearchError || movieError);
     }, [movieSearchError, movieError]);
+
+    useEffect(() => {
+        setLoading(movieSearchLoading || movieLoading);
+    }, [movieSearchLoading, movieLoading]);
 
     const searchContainer = () => {
         return (
