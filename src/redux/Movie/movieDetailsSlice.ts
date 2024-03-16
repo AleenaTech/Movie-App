@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import axios from "../../Utils/Request";
+
 export interface MovieDetailsState {
     fake: any;
     short: any;
@@ -14,12 +16,12 @@ const initialState: MovieDetailsState = {
     loading: false,
     error: "",
 };
+
 export const getMovieDetails = createAsyncThunk(
     "movieDetail",
     async (movieId: string) => {
-        return fetch(`https://search.imdbot.workers.dev/?tt=${movieId}`).then(
-            (response) => response.json()
-        );
+        const response = await axios.get(`/?tt=${movieId}`);
+        return response.data;
     }
 );
 
