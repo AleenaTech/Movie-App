@@ -11,6 +11,10 @@
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
+    h5 {
+        padding: 10px 0 20px;
+    }
+
     .poster-wrap {
         img {
             max-width: 100%;
@@ -20,6 +24,6 @@
     }
 
     &:hover img {
-        filter: brightness(70%);
+        filter: brightness(80%);
     }
 }

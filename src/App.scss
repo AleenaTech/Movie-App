@@ -1,6 +1,7 @@
 body {
-    background-color: #000000;
+    background-color: $font-color-dark;
 }
+
 h1,
 h2,
 h3,
@@ -9,7 +10,7 @@ h5,
 h6,
 p,
 a {
-    color: #ffffff;
+    color: $font-color-white;
     text-decoration: none;
 }
 

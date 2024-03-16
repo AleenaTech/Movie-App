@@ -1,30 +1,81 @@
 .movie-details-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px 60px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    border: 1px solid $font-color-white;
 
-.poster {
-    max-width: 100%;
-    height: 500px;
-    margin-bottom: 20px;
-}
+    .details-main-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
-.details {
-    font-size: 16px;
-}
+    strong {
+        font-size: 16px;
+        color: $font-color-white;
+    }
 
-.actors ul {
-    list-style-type: none;
-    padding: 0;
-}
+    .movie-details-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
 
-.reviews {
-    margin-top: 20px;
-}
+        @include mobile {
+            grid-template-columns: 1fr;
 
-.review-details {
-    margin-left: 20px;
+        }
+    }
+
+    .detail-poster {
+        .poster {
+            max-width: 100%;
+            margin-bottom: 20px;
+            width: 100%;
+            object-fit: contain;
+            max-height: 550px;
+            height: auto;
+        }
+    }
+
+    .details {
+        font-size: 14px;
+        gap: 20px;
+        @include flex-direction(column);
+
+    }
+
+    .actors {
+
+        @include flex-align(baseline);
+        gap: 40px;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+
+
+            li {
+                color: $font-color-white;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .reviews {
+        margin-top: 20px;
+
+        .review-basics {
+            @include flex-justify(space-between);
+            margin: 20px 0;
+
+            @include mobile {
+                @include flex-direction(column);
+                gap: 10px;
+            }
+        }
+    }
+
+    .rating-wrap {}
 }

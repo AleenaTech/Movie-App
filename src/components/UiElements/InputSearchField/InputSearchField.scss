@@ -5,13 +5,13 @@
         width: 100%;
         padding: 20px;
         font-size: 18px;
-        border: 1px solid #ccc;
-        border-radius: 30px;
+        border: 1px solid $font-color-white;
+        border-radius: $border-oval;
         box-shadow: none;
         outline: none;
 
         &::placeholder {
-            color: #999;
+            color: $font-secondary;
         }
     }
 }

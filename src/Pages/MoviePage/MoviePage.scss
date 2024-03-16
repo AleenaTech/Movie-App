@@ -6,11 +6,14 @@
     position: absolute;
     width: 100%;
     top: 0;
+    left: 0;
 }
 
 .welcome-content {
     text-align: center;
     color: #fff;
+    gap: 20px;
+    @include flex-direction(column);
 }
 
 .explore-button {

@@ -40,6 +40,12 @@
   }
 }
 
+@mixin mobile {
+  @media (max-width: 768px) {
+    transition: 0.5s;
+    @content;
+  }
+}
 
 /*======= Flex Functions and Prefix Start */
 

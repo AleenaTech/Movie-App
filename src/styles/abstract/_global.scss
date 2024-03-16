@@ -1,7 +1,9 @@
 * {
   outline: none !important;
   box-sizing: border-box;
+
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -15,7 +17,6 @@ body {
   font-family: $font-Roboto-Regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $bg-dark;
   width: 100%;
 }
 
@@ -43,26 +44,26 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-Roboto-Bold
+  font-family: $font-Roboto-Bold;
+  line-height: 26px;
+  letter-spacing: 0.8px;
+  padding-bottom: 15px;
 }
 
+strong,
+ul li,
+span,
+p {
+  line-height: 26px;
+  letter-spacing: 0.8px;
+  font-family: $font-Roboto-Regular;
+
+}
 
 a {
   text-decoration: none;
   cursor: pointer;
 }
-
-
-
-select {
-  font-family: "G-Regular";
-  border: 1px solid #efefef;
-  width: 280px;
-  margin: 15px;
-  padding: 15px;
-}
-
-
 
 
 .container {
@@ -113,23 +114,10 @@ select {
 }
 
 
-
-.bg-grey {
-  background-color: $bg-grey;
-}
-
-.bg-dark {
-  background-color: $bg-dark;
-}
-
-.bg-white {
-  background-color: $bg-white;
-}
-
 .text-white {
   font-family: $font-Roboto-Bold;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 26px;
   letter-spacing: 1px;
   color: $font-color-white ;
 }
@@ -138,8 +126,7 @@ select {
 p {
   font-family: $font-Roboto-Regular;
   font-size: 14px;
-  line-height: 21px;
-  font-family: $font-Roboto-Regular;
+  line-height: 26px;
 }
 
 
@@ -147,7 +134,7 @@ h6 {
   font-family: $font-Roboto-Bold;
   font-weight: 700;
   font-size: 16px;
-  line-height: 22px;
+  line-height: 26px;
   letter-spacing: 1px;
   color: $font-color-white;
 }
@@ -155,13 +142,13 @@ h6 {
 h5 {
   font-family: $font-Roboto-Bold;
   font-size: 14px;
-  line-height: 21px;
+  line-height: 26px;
   letter-spacing: 1px;
   color: $font-color-white;
 
   @include tablet {
     font-size: 19.2px;
-    line-height: 23px;
+    line-height: 26px;
   }
 }
 
@@ -169,22 +156,19 @@ h4 {
   font-family: $font-Roboto-Bold;
   font-weight: 700;
   font-size: 23.04px;
-  line-height: 27px;
+  line-height: 28px;
   letter-spacing: 1px;
   color: $font-color-white;
 }
 
 h3 {
-  @extend .paragraph-bold;
 
-  @include tablet {
-    font-family: $font-Roboto-Bold;
-    font-weight: 700;
-    font-size: 27.65px;
-    line-height: 32px;
-    letter-spacing: 1px;
-    color: $font-color-white;
-  }
+  font-family: $font-Roboto-Bold;
+  font-weight: 700;
+  font-size: 27.65px;
+  line-height: 32px;
+  letter-spacing: 1px;
+  color: $font-color-white;
 }
 
 h2 {

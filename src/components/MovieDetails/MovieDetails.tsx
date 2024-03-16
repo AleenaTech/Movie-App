@@ -85,57 +85,54 @@ const MovieDetails: React.FC = () => {
 
     return (
         <div className="movie-details-container">
-            <h2>{movieDetails.TITLE}</h2>
-            <img
-                className="poster"
-                src={movieDetails.IMG_POSTER}
-                alt={movieDetails.TITLE}
-            />
-            <div className="details">
-                <p>
-                    <strong>Description:</strong> {movieDetails.DESCRIPTION}
-                </p>
-                <p>
-                    <strong>Rank:</strong> {movieDetails.RANK}
-                </p>
-                <div className="actors">
-                    <strong>Actors:</strong>
-                    <ul>
-                        {movieDetails.ACTORS.map(
-                            (actor: any, index: number) => (
-                                <li key={index}>{actor.name}</li>
-                            )
-                        )}
-                    </ul>
+            <h1 className="details-main-title">{movieDetails.TITLE}</h1>
+            <div className="movie-details-wrap">
+                <div className="detail-poster">
+                    <img
+                        className="poster"
+                        src={movieDetails.IMG_POSTER}
+                        alt={movieDetails.TITLE}
+                    />
                 </div>
-                <div className="reviews">
-                    <h3>Reviews:</h3>
+                <div className="details">
                     <p>
-                        <strong>Best Rating:</strong>{" "}
-                        {movieDetails.REVIEWS?.reviewRating?.bestRating}
+                        <strong>Description: </strong>{" "}
+                        {movieDetails.DESCRIPTION}
                     </p>
                     <p>
-                        <strong>Worst Rating:</strong>{" "}
-                        {movieDetails.REVIEWS?.reviewRating?.worstRating}
+                        <strong>Rank: </strong> {movieDetails.RANK}
                     </p>
-                    <div className="review-details">
-                        <p>
-                            <strong>Author:</strong>{" "}
+                    <div className="actors">
+                        <strong>Actors: </strong>
+                        <ul>
+                            {movieDetails.ACTORS.map(
+                                (actor: any, index: number) => (
+                                    <li key={index}>{actor.name}</li>
+                                )
+                            )}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="reviews">
+                <h3>Latest Review</h3>
+
+                <div className="review-details">
+                    <div className="review-basics">
+                        <p style={{ textTransform: "capitalize" }}>
+                            <strong>Review Author: </strong>
                             {movieDetails.REVIEWS?.author?.name}
                         </p>
                         <p>
-                            <strong>Date:</strong>{" "}
+                            <strong>Date Posted: </strong>
                             {movieDetails.REVIEWS?.dateCreated}
                         </p>
-                        <p>
-                            <strong>Review:</strong>{" "}
-                            {movieDetails.REVIEWS?.reviewBody}
-                        </p>
                     </div>
+                    <p>
+                        <strong>Review: </strong>
+                        {movieDetails.REVIEWS?.reviewBody}
+                    </p>
                 </div>
-                <p>
-                    <strong>Keywords:</strong> {movieDetails.KEYWORDS}
-                </p>
             </div>
         </div>
     );
