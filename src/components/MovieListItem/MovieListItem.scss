@@ -11,10 +11,12 @@
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
-    img {
-        max-width: 100%;
-        height: auto;
-        transition: filter 0.3s ease;
+    .poster-wrap {
+        img {
+            max-width: 100%;
+            height: auto;
+            transition: filter 0.3s ease;
+        }
     }
 
     &:hover img {

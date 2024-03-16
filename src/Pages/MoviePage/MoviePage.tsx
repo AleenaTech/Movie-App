@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../components/UiElements/Button/Button";
 
 const MoviePage: React.FC = () => {
     return (
@@ -8,7 +9,10 @@ const MoviePage: React.FC = () => {
                 <h1>Welcome to our Movie App</h1>
                 <p>Discover, explore, and enjoy your favorite movies.</p>
                 <Link to={`/movieList`}>
-                    <button className="explore-button">Explore Movies</button>
+                    <Button
+                        buttonText="Explore Movies"
+                        className="explore-button"
+                    />
                 </Link>
             </div>
         </div>

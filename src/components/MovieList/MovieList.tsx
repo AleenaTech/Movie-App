@@ -44,7 +44,6 @@ const MovieList: React.FC = () => {
 
     useEffect(() => {
         dispatch(getMovies());
-        console.log("error state", moviesList);
     }, [dispatch]);
 
     useEffect(() => {
@@ -95,10 +94,13 @@ const MovieList: React.FC = () => {
 
     const searchContainer = () => {
         return (
-            <InputSearchField
-                value={searchValue}
-                onChange={handleMovieSearch}
-            />
+            <>
+                <h3>Search Movie</h3>
+                <InputSearchField
+                    value={searchValue}
+                    onChange={handleMovieSearch}
+                />
+            </>
         );
     };
 

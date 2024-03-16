@@ -12,8 +12,10 @@ const MovieListItem: React.FC<MovieListItemProps> = ({ movie }) => {
             to={`/movieList/detail/${movie.IMDB_ID}`}
             className="movie-list-item"
         >
-            <p>{movie.TITLE}</p>
-            <img src={movie.IMG_POSTER} alt={movie.TITLE} />
+            <h4>{movie.TITLE}</h4>
+            <div className="poster-wrap">
+                <img src={movie.IMG_POSTER} alt={movie.TITLE} />
+            </div>
         </Link>
     );
 };
