@@ -13,11 +13,12 @@
 //components
 @import "../components/Loader/Loader.scss";
 @import "../components/Logo/Logo.scss";
-@import "../components/MovieList/MovieList.scss";
-@import "../components/MovieListItem/MovieListItem.scss";
-@import "../components/MovieDetails/MovieDetails.scss";
-@import "../components/PageNotFound/PageNotFound.scss";
+
 @import "../components/UiElements/InputSearchField/InputSearchField.scss";
 
 //page
-@import "../pages/MoviePage/MoviePage";
+@import "../pages/WelcomePage/WelcomePage.scss";
+@import "../pages/MovieList/MovieList.scss";
+@import "../pages/MovieList/MovieListItem/MovieListItem.scss";
+@import "../pages/MovieDetails/MovieDetails.scss";
+@import "../pages/PageNotFound/PageNotFound.scss";

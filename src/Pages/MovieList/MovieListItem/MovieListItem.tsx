@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MovieType } from "../../commonTypes";
+import { MovieType } from "../../../commonTypes";
 
 interface MovieListItemProps {
     movie: MovieType;
