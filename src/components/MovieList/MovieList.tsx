@@ -48,15 +48,17 @@ const MovieList: React.FC = () => {
 
     useEffect(() => {
         if (moviesList) {
-            const formattedList: MovieType[] = moviesList.map((movie: any) => ({
-                TITLE: movie["#TITLE"] || "",
-                IMDB_ID: movie["#IMDB_ID"] || "",
-                IMG_POSTER: movie["#IMG_POSTER"] || "",
-                ACTORS: movie["#ACTORS"] || [],
-                DESCRIPTION: movie["#AKA"] || "",
-                RANK: movie["#RANK"] || "",
-                YEAR: movie["#YEAR"] || "",
-            }));
+            const formattedList: MovieType[] = moviesList
+                .slice(0, 10)
+                .map((movie: any) => ({
+                    TITLE: movie["#TITLE"] || "",
+                    IMDB_ID: movie["#IMDB_ID"] || "",
+                    IMG_POSTER: movie["#IMG_POSTER"] || "",
+                    ACTORS: movie["#ACTORS"] || [],
+                    DESCRIPTION: movie["#AKA"] || "",
+                    RANK: movie["#RANK"] || "",
+                    YEAR: movie["#YEAR"] || "",
+                }));
             setFormattedMoviesList(formattedList);
         }
     }, [moviesList]);
@@ -69,8 +71,9 @@ const MovieList: React.FC = () => {
 
     useEffect(() => {
         if (movieSearched) {
-            const formattedList: MovieType[] = movieSearched.map(
-                (movie: any) => ({
+            const formattedList: MovieType[] = movieSearched
+                .slice(0, 10)
+                .map((movie: any) => ({
                     TITLE: movie["#TITLE"] || "",
                     IMDB_ID: movie["#IMDB_ID"] || "",
                     IMG_POSTER: movie["#IMG_POSTER"] || "",
@@ -78,8 +81,7 @@ const MovieList: React.FC = () => {
                     DESCRIPTION: movie["#AKA"] || "",
                     RANK: movie["#RANK"] || "",
                     YEAR: movie["#YEAR"] || "",
-                })
-            );
+                }));
             setFormattedMoviesList(formattedList);
         }
     }, [movieSearched]);
