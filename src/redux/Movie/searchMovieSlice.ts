@@ -15,9 +15,39 @@ const initialState: MovieDetailsState = {
 };
 export const getSearchedMovie = createAsyncThunk(
     "searchMovie",
-    async (searchValue: string) => {
-        const response = await axios.get(`/search?q=${searchValue}`);
-        return response.data;
+    async (searchValue: string, { rejectWithValue }) => {
+        try {
+            const response = await axios.get(`/search?q=${searchValue}`);
+            return response.data;
+        } catch (error: any) {
+            if (error.response) {
+                const status = error.response.status;
+                switch (status) {
+                    case 400:
+                        return rejectWithValue(
+                            "Bad request. Please check your input."
+                        );
+
+                    case 429:
+                        return rejectWithValue(
+                            "Too Many Requests. Please try again later."
+                        );
+                    case 500:
+                        return rejectWithValue(
+                            "Internal server error. Please try again later."
+                        );
+
+                    default:
+                        return rejectWithValue(
+                            `An error occurred (${status}).`
+                        );
+                }
+            } else {
+                return rejectWithValue(
+                    "Network error. Please check your connection."
+                );
+            }
+        }
     }
 );
 
@@ -29,6 +59,7 @@ export const searchMovieSlice = createSlice({
         builder
             .addCase(getSearchedMovie.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(getSearchedMovie.fulfilled, (state, action) => {
                 state.loading = false;

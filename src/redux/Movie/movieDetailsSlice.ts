@@ -20,8 +20,36 @@ const initialState: MovieDetailsState = {
 export const getMovieDetails = createAsyncThunk(
     "movieDetail",
     async (movieId: string) => {
-        const response = await axios.get(`/?tt=${movieId}`);
-        return response.data;
+        try {
+            const response = await axios.get(`/?tt=${movieId}`);
+            return response.data;
+        } catch (error: any) {
+            if (error.response) {
+                const status = error.response.status;
+                switch (status) {
+                    case 400:
+                        throw new Error(
+                            "Bad request. Please check your input."
+                        );
+                    case 429:
+                        throw new Error(
+                            "Too Many Requests. Please try again later."
+                        );
+                    case 500:
+                        throw new Error(
+                            "Internal server error. Please try again later."
+                        );
+                    default:
+                        throw new Error(`An error occurred (${status}).`);
+                }
+            } else if (error.request) {
+                throw new Error(
+                    "No response received from server. Please try again later."
+                );
+            } else {
+                throw new Error("Network error. Please check your connection.");
+            }
+        }
     }
 );
 
