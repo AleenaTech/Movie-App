@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { getMovieDetails } from "../../redux/Movie/movieDetailsSlice";
 import { useParams } from "react-router-dom";
 import { MovieType } from "../../commonTypes";
-import Loader from "../Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const MovieDetails: React.FC = () => {
     const dispatch = useAppDispatch();
