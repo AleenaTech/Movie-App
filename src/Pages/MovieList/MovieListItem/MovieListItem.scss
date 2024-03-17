@@ -13,12 +13,13 @@
 
     h5 {
         padding: 10px 0 20px;
+        font-size: 16px;
     }
 
     .poster-wrap {
         img {
             max-width: 100%;
-            height: auto;
+            height: 500px;
             transition: filter 0.3s ease;
         }
     }

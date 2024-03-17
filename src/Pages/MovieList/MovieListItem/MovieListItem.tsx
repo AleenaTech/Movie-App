@@ -14,7 +14,13 @@ const MovieListItem: React.FC<MovieListItemProps> = ({ movie }) => {
         >
             <h5>{movie.TITLE}</h5>
             <div className="poster-wrap">
-                <img src={movie.IMG_POSTER} alt={movie.TITLE} />
+                <img
+                    src={
+                        movie.IMG_POSTER ||
+                        require("../../../assets/images/NoImage.png")
+                    }
+                    alt={movie.TITLE}
+                />
             </div>
         </Link>
     );

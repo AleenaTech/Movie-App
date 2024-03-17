@@ -90,7 +90,10 @@ const MovieDetails: React.FC = () => {
                 <div className="detail-poster">
                     <img
                         className="poster"
-                        src={movieDetails.IMG_POSTER}
+                        src={
+                            movieDetails.IMG_POSTER ||
+                            require("../../assets/images/NoImage.png")
+                        }
                         alt={movieDetails.TITLE}
                     />
                 </div>

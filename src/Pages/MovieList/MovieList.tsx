@@ -44,6 +44,7 @@ const MovieList: React.FC = () => {
 
     useEffect(() => {
         dispatch(getMovies());
+        console.log("logggg");
     }, [dispatch]);
 
     useEffect(() => {
@@ -112,7 +113,7 @@ const MovieList: React.FC = () => {
                 {loading ? (
                     <Loader />
                 ) : error ? (
-                    <p>{error}</p>
+                    <p className="listing-error">{error}</p>
                 ) : formattedMoviesList.length > 0 ? (
                     <div className="movie-list">
                         {formattedMoviesList.map((movie: MovieType) => (
