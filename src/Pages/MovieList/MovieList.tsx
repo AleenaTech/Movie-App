@@ -1,39 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { getMovies } from "../../redux/Movie/randomMoviesSlice";
-import { getSearchedMovie } from "../../redux/Movie/searchMovieSlice";
-import { MovieType } from "../../commonTypes";
-import MovieListItem from "./MovieListItem/MovieListItem";
-import { useDebounce } from "../../customHooks/useDebounce";
 import Loader from "../../components/Loader/Loader";
 import InputSearchField from "../../components/UiElements/InputSearchField/InputSearchField";
+import { useDebounce } from "../../customHooks/useDebounce";
+import MovieListItem from "./MovieListItem/MovieListItem";
+import useMovieSDK from "../../customHooks/useMovieSDK";
+import { MovieType } from "../../commonTypes";
 
 const MovieList: React.FC = () => {
-    const dispatch = useAppDispatch();
+    const {
+        randomMoviesState,
+        searchedMovieState,
+        fetchRandomMovies,
+        searchMovie,
+    } = useMovieSDK();
 
-    // handle random movie and searched Movie state
-    const moviesList = useAppSelector((state) => state.randomMovie.data);
-    const movieSearched = useAppSelector((state) => state.searchMovie.data);
     const [formattedMoviesList, setFormattedMoviesList] = useState<MovieType[]>(
         []
     );
-
-    // handle loading state
-    const movieLoading = useAppSelector((state) => state.randomMovie.loading);
-    const movieSearchLoading = useAppSelector(
-        (state) => state.searchMovie.loading
-    );
-
-    // handle error state
-    const movieError = useAppSelector((state) => state.randomMovie.error);
-    const movieSearchError = useAppSelector((state) => state.searchMovie.error);
     const [error, setError] = useState<string | null>("");
-
-    const [searchValue, setSearchValue] = useState<string>("");
-
     const [loading, setLoading] = useState<boolean>(
-        movieSearchLoading || movieLoading
+        randomMoviesState.loading || searchedMovieState.loading
     );
+    const [searchValue, setSearchValue] = useState<string>("");
 
     // Debounce search value
     const debouncedSearchValue = useDebounce(searchValue, 1000);
@@ -43,13 +31,13 @@ const MovieList: React.FC = () => {
     };
 
     useEffect(() => {
-        dispatch(getMovies());
-        console.log("logggg");
-    }, [dispatch]);
+        // Fetch random movies initially
+        fetchRandomMovies();
+    }, []);
 
     useEffect(() => {
-        if (moviesList) {
-            const formattedList: MovieType[] = moviesList
+        if (randomMoviesState.data) {
+            const formattedList: MovieType[] = randomMoviesState.data
                 .slice(0, 10)
                 .map((movie: any) => ({
                     TITLE: movie["#TITLE"] || "",
@@ -62,17 +50,17 @@ const MovieList: React.FC = () => {
                 }));
             setFormattedMoviesList(formattedList);
         }
-    }, [moviesList]);
+    }, [randomMoviesState.data]);
 
     useEffect(() => {
         if (debouncedSearchValue !== "") {
-            dispatch(getSearchedMovie(debouncedSearchValue));
+            searchMovie(debouncedSearchValue);
         }
-    }, [dispatch, debouncedSearchValue]);
+    }, [debouncedSearchValue]);
 
     useEffect(() => {
-        if (movieSearched) {
-            const formattedList: MovieType[] = movieSearched
+        if (searchedMovieState.data) {
+            const formattedList: MovieType[] = searchedMovieState.data
                 .slice(0, 10)
                 .map((movie: any) => ({
                     TITLE: movie["#TITLE"] || "",
@@ -85,15 +73,15 @@ const MovieList: React.FC = () => {
                 }));
             setFormattedMoviesList(formattedList);
         }
-    }, [movieSearched]);
+    }, [searchedMovieState.data]);
 
     useEffect(() => {
-        setError(movieSearchError || movieError);
-    }, [movieSearchError, movieError]);
+        setError(searchedMovieState.error || randomMoviesState.error);
+    }, [searchedMovieState.error, randomMoviesState.error]);
 
     useEffect(() => {
-        setLoading(movieSearchLoading || movieLoading);
-    }, [movieSearchLoading, movieLoading]);
+        setLoading(searchedMovieState.loading || randomMoviesState.loading);
+    }, [searchedMovieState.loading, randomMoviesState.loading]);
 
     const searchContainer = () => {
         return (
@@ -126,6 +114,7 @@ const MovieList: React.FC = () => {
             </div>
         );
     };
+
     return (
         <div className="movie-wrap">
             {searchContainer()}
