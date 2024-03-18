@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { getMovieDetails } from "../../redux/Movie/movieDetailsSlice";
-import { useParams } from "react-router-dom";
-import { MovieType } from "../../commonTypes";
 import Loader from "../../components/Loader/Loader";
+import { useParams } from "react-router-dom";
+import useMovieSDK from "../../customHooks/useMovieSDK";
+import { MovieType } from "../../commonTypes";
 
 const MovieDetails: React.FC = () => {
-    const dispatch = useAppDispatch();
     const { movieId } = useParams<{ movieId?: string }>();
-
-    const fake = useAppSelector((state) => state.movieDetails.fake);
-    const short = useAppSelector((state) => state.movieDetails.short);
-    const loading = useAppSelector((state) => state.movieDetails.loading);
-    const error = useAppSelector((state) => state.movieDetails.error);
+    const { movieDetailsState, fetchMovieDetails } = useMovieSDK();
 
     const [movieDetails, setMovieDetails] = useState<MovieType>({
         TITLE: "",
@@ -33,8 +27,10 @@ const MovieDetails: React.FC = () => {
 
     useEffect(() => {
         if (movieId) {
-            dispatch(getMovieDetails(movieId));
+            fetchMovieDetails(movieId);
         }
+
+        // Cleanup function to clear movie details state when component unmounts
         return () => {
             setMovieDetails({
                 TITLE: "",
@@ -53,9 +49,10 @@ const MovieDetails: React.FC = () => {
                 KEYWORDS: "",
             });
         };
-    }, [dispatch, movieId]);
+    }, [movieId]);
 
     useEffect(() => {
+        const { fake, short } = movieDetailsState;
         if (fake && short) {
             const formattedDetails: Partial<MovieType> = {
                 TITLE: fake["#TITLE"] || "",
@@ -73,14 +70,14 @@ const MovieDetails: React.FC = () => {
                 ...formattedDetails,
             }));
         }
-    }, [fake, short]);
+    }, [movieDetailsState]);
 
-    if (loading) {
+    if (movieDetailsState.loading) {
         return <Loader />;
     }
 
-    if (error) {
-        return <p>Error: {error}</p>;
+    if (movieDetailsState.error) {
+        return <p>Error: {movieDetailsState.error}</p>;
     }
 
     return (
